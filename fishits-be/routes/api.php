@@ -15,18 +15,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::get('/', function () {
     return ['msg' => 'Welcome to FISHITS API'];
 });
 
-// Route::get('/fish', [FishController::class, 'index']);
-// Route::post('/fish', [FishController::class, 'store']);
+//API route for register new user
+Route::post('/register', [App\Http\Controllers\Api\AuthController::class, 'register']);
+//API route for login user
+Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
-// route resource
-Route::resource('fish', FishController::class)->only([
-    'index', 'store'
-]);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    // route resource
+
+    Route::get('/profile', function () {
+        return auth()->user();
+    });
+
+    Route::resource('fish', FishController::class)->only([
+        'index', 'store'
+    ]);
+
+    Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
+});
+
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
