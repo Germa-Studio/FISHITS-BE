@@ -20,7 +20,18 @@ class FishController extends Controller
             'data' => [
                 'fish' => $fish
             ]
-         ]);
+        ]);
+    }
+
+    public function show(string $id)
+    {
+        $fish = Fish::find($id);
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'fish' => $fish
+            ]
+        ]);
     }
 
     /**
@@ -55,15 +66,6 @@ class FishController extends Controller
                 'fish' => $fish
             ]
          ]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-
     }
 
     /**

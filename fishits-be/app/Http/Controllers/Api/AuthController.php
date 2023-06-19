@@ -14,17 +14,14 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string',
-        //     'email' => 'required|string|email|unique:users',
-        //     'password' => 'required|string|confirmed'
-        // ]);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string'
+            'password' => 'required|string',
+            'username' => 'required|string|unique:users'
         ]);
+
 
         if($validator->fails()){
             return response()->json([
@@ -37,14 +34,17 @@ class AuthController extends Controller
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'username' => $request->username
         ]);
-
-        // dump($user);
 
         $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        // save token to database
+        $user->tokens()->where('tokenable_id', $user->id)->update([
+            'created_at' => Carbon::now()
+        ]);
 
         return response()->json([
             'message' => 'Successfully created user!',
@@ -56,14 +56,11 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // $request->validate([
-        //     'email' => 'required|string|email',
-        //     'password' => 'required|string',
-        //     'remember_me' => 'boolean'
-        // ]);
+        $loginType = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $request->merge([$loginType => $request->email]);
 
         $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email',
+            $loginType => 'required|string',
             'password' => 'required|string'
         ]);
 
@@ -75,33 +72,64 @@ class AuthController extends Controller
             ]);
         }
 
-        $credentials = request(['email', 'password']);
-        if (!Auth::attempt($credentials))
+        if (!Auth::attempt($request->only($loginType, 'password'))) {
             return response()->json([
-                'message' => 'Unauthorized'
+                'message' => 'Invalid login details'
             ], 401);
+        }
 
         $user = $request->user();
 
-        $tokenResult = $user->createToken('Personal Access Token');
+        $tokenResult = $user->createToken('auth_token');
         $token = $tokenResult->plainTextToken;
 
-        if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
-        // $token->save();
-
         return response()
-            ->json(['message' => 'Hi ' . $user->name . ', welcome to home', 'access_token' => $tokenResult, 'token_type' => 'Bearer',]);
-
-        // return response()->json([
-        //     'access_token' => $tokenResult->accessToken,
-        //     'token_type' => 'Bearer',
-        // ]);
+            ->json(['message' => 'Hi ' . $user->name . ', welcome to home',
+                    'data' => $user,
+                    'access_token' => $token,
+                    'token_type' => 'Bearer']);
     }
 
     public function user(Request $request)
     {
         return response()->json($request->user());
+    }
+
+    public function update(Request $request)
+    {
+        $user = $request->user();
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'username' => 'required|string|unique:users,username,'.$user->id,
+            'email' => 'required|string|email|unique:users,email,'.$user->id,
+            'password' => 'nullable|string'
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'data' => [],
+                'message' => $validator->errors(),
+                'success' => false
+            ]);
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email
+        ]);
+
+        if($request->password){
+            $user->update([
+                'password' => bcrypt($request->password)
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Successfully updated user!',
+            'data' => $user
+        ], 201);
     }
 
     public function logout(Request $request)

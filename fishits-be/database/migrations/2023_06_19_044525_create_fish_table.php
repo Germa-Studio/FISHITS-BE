@@ -8,22 +8,26 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('fish', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->float('weight', 10, 2);
-            $table->bigInteger('price');
+            $table->string('name')->nullable();
+            $table->double('weight', 10, 2)->nullable();
+            $table->bigInteger('price')->nullable();
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('fish');
     }

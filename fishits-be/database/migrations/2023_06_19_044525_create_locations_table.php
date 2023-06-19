@@ -8,21 +8,27 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('latitude', 10, 6);
-            $table->float('longitude', 10, 6);
+            $table->double('latitude', 10, 6);
+            $table->double('longitude', 10, 6);
+            $table->double('s', 10, 6);
+            $table->double('e', 10, 6);
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('locations');
     }
