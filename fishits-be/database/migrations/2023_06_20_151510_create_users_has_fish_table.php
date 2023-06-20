@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('users_id')->index('fk_users_has_fish_users1_idx');
             $table->unsignedBigInteger('fish_id')->index('fk_users_has_fish_fish1_idx');
             $table->integer('amount')->nullable();
-            $table->string('bbm')->nullable();
+            $table->double('bbm', 10, 6)->nullable();
             $table->timestamps();
 
             $table->primary(['users_id', 'fish_id']);

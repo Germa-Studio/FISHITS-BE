@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('weight', 10, 2)->nullable();
             $table->bigInteger('price')->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('locations_id')->index('fk_fish_locations1_idx');
         });
     }
 

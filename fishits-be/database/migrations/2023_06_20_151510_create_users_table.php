@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('shipType_id')->index('fk_users_shipType1_idx');
         });
     }
 

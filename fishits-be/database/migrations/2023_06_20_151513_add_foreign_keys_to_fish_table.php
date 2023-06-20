@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fish_has_locations', function (Blueprint $table) {
-            $table->unsignedBigInteger('fish_id')->index('fk_fish_has_locations_fish_idx');
-            $table->unsignedBigInteger('locations_id')->index('fk_fish_has_locations_locations1_idx');
-
-            $table->primary(['fish_id', 'locations_id']);
+        Schema::table('fish', function (Blueprint $table) {
+            $table->foreign(['locations_id'], 'fk_fish_locations1')->references(['id'])->on('locations')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fish_has_locations');
+        Schema::table('fish', function (Blueprint $table) {
+            $table->dropForeign('fk_fish_locations1');
+        });
     }
 };

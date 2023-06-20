@@ -39,18 +39,20 @@ class FishController extends Controller
      */
     public function store(Request $request)
     {
-
+        // store controller with foreign key locations_id
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
+            'name' => 'required',
             'weight' => 'required',
-            'price' => 'required|int',
+            'price' => 'required',
+            'locations_id' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json([
-                'data' => [],
-                'message' => $validator->errors(),
-                'success' => false
+                'status' => 'error',
+                'data' => [
+                    'message' => $validator->errors()
+                ]
             ]);
         }
 
@@ -58,6 +60,7 @@ class FishController extends Controller
             'name' => $request->name,
             'weight' => $request->weight,
             'price' => $request->price,
+            'locations_id' => $request->locations_id
         ]);
 
         return response()->json([
@@ -65,15 +68,7 @@ class FishController extends Controller
             'data' => [
                 'fish' => $fish
             ]
-         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        ]);
     }
 
     /**
@@ -81,14 +76,50 @@ class FishController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'weight' => 'required',
+            'price' => 'required',
+            'locations_id' => 'required'
+        ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'data' => [
+                    'message' => $validator->errors()
+                ]
+            ]);
+        }
+
+        $fish = Fish::find($id);
+        $fish->update([
+            'name' => $request->name,
+            'weight' => $request->weight,
+            'price' => $request->price,
+            'locations_id' => $request->locations_id
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'fish' => $fish
+            ]
+        ]);
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $fish = Fish::find($id);
+        $fish->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => [
+                'fish' => $fish
+            ]
+        ]);
     }
 }
