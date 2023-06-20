@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('machine')->nullable();
             $table->double('bbm', 10, 6)->nullable();
             $table->double('speed', 10, 6)->nullable();
+            $table->timestamps();
         });
     }
 
