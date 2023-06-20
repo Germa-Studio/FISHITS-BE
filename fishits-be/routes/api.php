@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\FishController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\FishLocationController;
 use App\Http\Controllers\Api\ShipTypeController;
+use App\Http\Controllers\Api\UserFishController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,9 @@ Route::group(['middleware' => ['auth:sanctum', 'role:user']], function () {
     Route::post('/ship-types', [ShipTypeController::class, 'store']);
     Route::put('/ship-types/{id}', [ShipTypeController::class, 'update']);
     Route::delete('/ship-types/{id}', [ShipTypeController::class, 'destroy']);
+
+    Route::post('/users/{user}/fish', [UserFishController::class, 'attachFish']);
+    Route::delete('/users/{user}/fish/{fish}', [UserFishController::class, 'detachFish']);
 });
 
 // Create routes with role admin

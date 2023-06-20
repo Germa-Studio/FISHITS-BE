@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Fish extends Model
 {
@@ -15,12 +17,10 @@ class Fish extends Model
         'locations_id'
     ];
 
-    // public function locations()
-    // {
-    //     return $this->belongsToMany(
-    //         Location::class,
-    //         'fish_has_locations',
-    //         'fish_id',
-    //         'locations_id');
-    // }
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'users_has_fish', 'fish_id', 'users_id')
+                    ->withPivot('amount', 'bbm')
+                    ->withTimestamps();
+    }
 }
