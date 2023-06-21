@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth:sanctum', 'role:user']], function () {
 
 // Create routes with role admin
 Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
+    Route::put('/update', [App\Http\Controllers\Api\AuthController::class, 'update']);
+    Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
+
     Route::get('/fish', [FishController::class, 'index']);
     Route::get('/fish/{id}', [FishController::class, 'show']);
     Route::post('/fish', [FishController::class, 'store']);
