@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\FishLocationController;
 use App\Http\Controllers\Api\ShipTypeController;
 use App\Http\Controllers\Api\UserFishController;
+use App\Http\Controllers\Api\RegionPicController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,9 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::delete('/locations/{id}', [LocationController::class, 'destroy']);
 
     Route::get('/locations/fish/{id}', [LocationController::class, 'showFishByLocation']);
+
+    Route::get('/regionpics', [RegionPicController::class, 'index']);
+    Route::post('/regionpics', [RegionPicController::class, 'store']);
 });
 
 Route::get('fish/{fish}/locations', [FishLocationController::class, 'index']);

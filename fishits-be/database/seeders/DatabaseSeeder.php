@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FishTableSeeder::class);
         $this->call(ShipTypeTableSeeder::class);
         $this->call(UsersHasFishTableSeeder::class);
+        $this->call(RegionpicTableSeeder::class);
     }
 }
