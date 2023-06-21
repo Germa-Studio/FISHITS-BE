@@ -39,7 +39,7 @@ class FishTableSeeder extends Seeder
                 'price' => 40000,
                 'created_at' => '2023-06-20 14:32:38',
                 'updated_at' => '2023-06-20 14:32:38',
-                'locations_id' => 0,
+                'locations_id' => 1,
             ),
             2 =>
             array (

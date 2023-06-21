@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => '2023-06-19 01:23:43',
                 'updated_at' => '2023-06-19 02:35:46',
-                'shipType_id' => 0,
+                'shipType_id' => 1,
             ),
             1 =>
             array (
@@ -47,7 +47,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => '2023-06-19 02:42:43',
                 'updated_at' => '2023-06-19 02:42:43',
-                'shipType_id' => 0,
+                'shipType_id' => 1,
             ),
             2 =>
             array (
