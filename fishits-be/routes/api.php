@@ -1,14 +1,14 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\FishController;
 use App\Http\Controllers\Api\LocationController;
-use App\Http\Controllers\Api\FishLocationController;
 use App\Http\Controllers\Api\ShipTypeController;
 use App\Http\Controllers\Api\UserFishController;
 use App\Http\Controllers\Api\RegionPicController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\FishLocationController;
 
 Route::get('/', function () {
     return ['msg' => 'Welcome to FISHITS API'];
