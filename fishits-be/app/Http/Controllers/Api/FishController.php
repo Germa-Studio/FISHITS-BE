@@ -14,7 +14,7 @@ class FishController extends Controller
      */
     public function index()
     {
-        $fish = Fish::all();
+        $fish = Fish::with('locations')->get();
         return response()->json([
             'status' => 'success',
             'data' => [

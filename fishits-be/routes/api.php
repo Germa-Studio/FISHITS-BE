@@ -20,6 +20,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('/update', [AuthController::class, 'update']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
+    Route::get('/locations', [LocationController::class, 'index']);
+    Route::get('/locations/{id}', [LocationController::class, 'show']);
+
     Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/fish', [FishController::class, 'index']);
         Route::get('/fish/{id}', [FishController::class, 'show']);
@@ -27,8 +30,6 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
         Route::put('/fish/{id}', [FishController::class, 'update']);
         Route::delete('/fish/{id}', [FishController::class, 'destroy']);
 
-        Route::get('/locations', [LocationController::class, 'index']);
-        Route::get('/locations/{id}', [LocationController::class, 'show']);
         Route::post('/locations', [LocationController::class, 'store']);
         Route::put('/locations/{id}', [LocationController::class, 'update']);
         Route::delete('/locations/{id}', [LocationController::class, 'destroy']);
