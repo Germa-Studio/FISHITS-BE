@@ -90,6 +90,28 @@ class AuthController extends Controller
                     'token_type' => 'Bearer']);
     }
 
+    // login only with token
+    public function relogin(Request $request)
+    {
+        $user = $request->user();
+
+        // if failed, return failed with keterangan login with username or email
+        if (!$user) {
+            return response()->json([
+                'message' => 'Invalid login details'
+            ], 401);
+        }
+
+        $tokenResult = $user->createToken('auth_token');
+        $token = $tokenResult->plainTextToken;
+
+        return response()
+            ->json(['message' => 'Hi ' . $user->name . ', welcome to home',
+                    'data' => $user,
+                    'access_token' => $token,
+                    'token_type' => 'Bearer']);
+    }
+
     public function user(Request $request)
     {
         return response()->json($request->user());
