@@ -70,7 +70,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'ji',
                 'email' => 'ji@gmail.com',
                 'email_verified_at' => NULL,
-                'role' => 'user',
+                'role' => 'admin',
                 'password' => '$2y$10$GL3LMh91W0d8XHy.LTZdVep2XX6l4j3.xsOIKgfit8snuCssRAFc2',
                 'remember_token' => NULL,
                 'created_at' => '2023-06-26 14:26:36',
