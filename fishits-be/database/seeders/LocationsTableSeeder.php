@@ -24,6 +24,7 @@ class LocationsTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
+                'name' => 'Dorang 1',
                 'latitude' => 6.656116667,
                 'longitude' => 113.8387333,
                 's' => 39.367,
@@ -34,6 +35,7 @@ class LocationsTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
+                'name' => 'Ikan Merah',
                 'latitude' => 6.697433333,
                 'longitude' => 113.6780,
                 's' => 41.846,
@@ -44,6 +46,7 @@ class LocationsTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 3,
+                'name' => 'MD 1',
                 'latitude' => 6.520616667,
                 'longitude' => 113.7680,
                 's' => 31.237,
@@ -54,6 +57,7 @@ class LocationsTableSeeder extends Seeder
             3 =>
             array (
                 'id' => 4,
+                'name' => 'MD 2',
                 'latitude' => 6.518750,
                 'longitude' => 113.7810833,
                 's' => 31.125,
@@ -64,6 +68,7 @@ class LocationsTableSeeder extends Seeder
             4 =>
             array (
                 'id' => 5,
+                'name' => 'Tos Pote',
                 'latitude' => 6.670616667,
                 'longitude' => 113.7592,
                 's' => 40.237,
@@ -74,6 +79,7 @@ class LocationsTableSeeder extends Seeder
             5 =>
             array (
                 'id' => 6,
+                'name' => 'Zam 1',
                 'latitude' => 6.695233333,
                 'longitude' => 113.9754833,
                 's' => 41.714,
@@ -84,6 +90,7 @@ class LocationsTableSeeder extends Seeder
             6 =>
             array (
                 'id' => 7,
+                'name' => 'Tompas 1',
                 'latitude' => 6.610833333,
                 'longitude' => 113.8947333,
                 's' => 36.650,
@@ -94,6 +101,7 @@ class LocationsTableSeeder extends Seeder
             7 =>
             array (
                 'id' => 8,
+                'name' => 'Tos 2',
                 'latitude' => 6.658350,
                 'longitude' => 113.7708667,
                 's' => 39.501,
@@ -104,6 +112,7 @@ class LocationsTableSeeder extends Seeder
             8 =>
             array (
                 'id' => 9,
+                'name' => 'TLI',
                 'latitude' => 6.694350,
                 'longitude' => 113.97535,
                 's' => 41.661,
@@ -114,6 +123,7 @@ class LocationsTableSeeder extends Seeder
             9 =>
             array (
                 'id' => 10,
+                'name' => 'TAAA 5',
                 'latitude' => 6.593900,
                 'longitude' => 113.9062,
                 's' => 35.634,
@@ -124,6 +134,7 @@ class LocationsTableSeeder extends Seeder
             10 =>
             array (
                 'id' => 11,
+                'name' => 'SMBR 1',
                 'latitude' => 6.608100,
                 'longitude' => 113.85015,
                 's' => 36.486,
@@ -134,6 +145,7 @@ class LocationsTableSeeder extends Seeder
             11 =>
             array (
                 'id' => 12,
+                'name' => 'SMBR 3',
                 'latitude' => 6.569750,
                 'longitude' => 113.84155,
                 's' => 34.185,
@@ -144,6 +156,7 @@ class LocationsTableSeeder extends Seeder
             12 =>
             array (
                 'id' => 13,
+                'name' => 'TADEZ 4',
                 'latitude' => 6.384633,
                 'longitude' => 113.8952167,
                 's' => 23.078,
@@ -154,6 +167,7 @@ class LocationsTableSeeder extends Seeder
             13 =>
             array (
                 'id' => 14,
+                'name' => 'TADEZ 5',
                 'latitude' => 6.521033,
                 'longitude' => 113.87125,
                 's' => 31.262,
@@ -164,6 +178,7 @@ class LocationsTableSeeder extends Seeder
             14 =>
             array (
                 'id' => 15,
+                'name' => 'KETENG',
                 'latitude' => 6.588833,
                 'longitude' => 113.6960667,
                 's' => 35.330,
