@@ -32,6 +32,7 @@ class LocationController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
+            'name' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
             's' => 'required',
@@ -47,6 +48,7 @@ class LocationController extends Controller
         }
 
         $location = Location::create([
+            'name' => $request->name,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             's' => $request->s,
@@ -72,6 +74,7 @@ class LocationController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
+            'name' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
             's' => 'required',
@@ -87,6 +90,7 @@ class LocationController extends Controller
         }
 
         $location->update([
+            'name' => $request->name,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             's' => $request->s,
