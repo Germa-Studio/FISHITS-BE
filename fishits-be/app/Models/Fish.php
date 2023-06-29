@@ -11,18 +11,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Fish extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'name',
-        'weight',
-        'price'
         // 'locations_id'
     ];
 
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'users_has_fish', 'fish_id', 'users_id')
-                    ->withPivot('berat', 'satuanBerat', 'harga', 'bbmTerpakai', 'jarakTempuh', 'pengeluaran', 'pendapatan', 'keuntungan', 'tanggal', 'waktu')
-                    ->withTimestamps();
+                    ->withPivot('berat', 'satuanBerat', 'harga', 'bbmTerpakai', 'jarakTempuh', 'pengeluaran', 'pendapatan', 'keuntungan', 'tanggal', 'waktu');
     }
 
     // public function locations(): BelongsTo

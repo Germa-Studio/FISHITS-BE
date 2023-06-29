@@ -48,7 +48,6 @@ class User extends Authenticatable
     public function fish(): BelongsToMany
     {
         return $this->belongsToMany(Fish::class, 'users_has_fish', 'users_id', 'fish_id')
-                    ->withPivot('berat', 'satuanBerat', 'harga', 'bbmTerpakai', 'jarakTempuh', 'pengeluaran', 'pendapatan', 'keuntungan', 'tanggal', 'waktu')
-                    ->withTimestamps();
+                    ->withPivot('berat', 'satuanBerat', 'harga', 'bbmTerpakai', 'jarakTempuh', 'pengeluaran', 'pendapatan', 'keuntungan', 'tanggal', 'waktu');
     }
 }

@@ -43,8 +43,8 @@ class FishController extends Controller
         // store controller with foreign key locations_id
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'weight' => 'required',
-            'price' => 'required'
+            // 'weight' => 'required',
+            // 'price' => 'required'
             // 'locations_id' => 'required'
         ]);
 
@@ -59,8 +59,8 @@ class FishController extends Controller
 
         $fish = Fish::create([
             'name' => $request->name,
-            'weight' => $request->weight,
-            'price' => $request->price
+            // 'weight' => $request->weight,
+            // 'price' => $request->price
             // 'locations_id' => $request->locations_id
         ]);
 
@@ -79,8 +79,8 @@ class FishController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'weight' => 'required',
-            'price' => 'required'
+            // 'weight' => 'required',
+            // 'price' => 'required'
             // 'locations_id' => 'required'
         ]);
 
@@ -96,8 +96,8 @@ class FishController extends Controller
         $fish = Fish::find($id);
         $fish->update([
             'name' => $request->name,
-            'weight' => $request->weight,
-            'price' => $request->price
+            // 'weight' => $request->weight,
+            // 'price' => $request->price
             // 'locations_id' => $request->locations_id
         ]);
 

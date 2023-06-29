@@ -18,7 +18,7 @@ class UserFishController extends Controller
     public function getAllFish()
     {
         // List all user and their fish
-        $users = User::with('fish')->get();
+        $users = User::with('fish')->get(['id', 'username']);
         return response()->json($users, 200);
     }
 
@@ -61,6 +61,23 @@ class UserFishController extends Controller
         // $user->fish()->attach($fishId, ['amount' => $amount, 'bbm' => $bbm]);
 
         return response()->json(['message' => 'Fish attached to user successfully']);
+    }
+
+    // Get fish based on date for all users
+    public function getAllFishByDate($date)
+    {
+        $users = User::with(['fish' => function ($query) use ($date) {
+            $query->where('tanggal', $date);
+        }])->get(['id', 'username']);
+
+        return response()->json($users, 200);
+    }
+
+    // Get fish based on date
+    public function getFishByDate(User $user, $date)
+    {
+        $fish = $user->fish()->where('tanggal', $date)->get();
+        return response()->json($fish, 200);
     }
 
     public function detachFish(User $user, Fish $fish)

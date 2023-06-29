@@ -34,6 +34,10 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('/fish/{id}', [FishController::class, 'update']);
     Route::delete('/fish/{id}', [FishController::class, 'destroy']);
 
+    Route::get('/users/fish', [UserFishController::class, 'getAllFish']);
+    // get fish by date for all users
+    Route::get('/users/fish/{date}', [UserFishController::class, 'getAllFishByDate']);
+
     Route::group(['middleware' => 'role:admin'], function () {
 
         Route::get('/locations/fish/{id}', [LocationController::class, 'showFishByLocation']);
@@ -53,6 +57,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
         Route::put('/ship-types/{id}', [ShipTypeController::class, 'update']);
         Route::delete('/ship-types/{id}', [ShipTypeController::class, 'destroy']);
 
+        Route::get('/users/{user}/fish', [UserFishController::class, 'getFish']);
+        Route::get('/users/{user}/fish/{date}', [UserFishController::class, 'getFishByDate']);
         Route::post('/users/{user}/fish', [UserFishController::class, 'attachFish']);
         Route::delete('/users/{user}/fish/{fish}', [UserFishController::class, 'detachFish']);
     });
