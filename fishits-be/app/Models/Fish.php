@@ -20,6 +20,7 @@ class Fish extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'users_has_fish', 'fish_id', 'users_id')
+                    ->as('catched')
                     ->withPivot('berat', 'satuanBerat', 'harga', 'bbmTerpakai', 'jarakTempuh', 'pengeluaran', 'pendapatan', 'keuntungan', 'tanggal', 'waktu');
     }
 
