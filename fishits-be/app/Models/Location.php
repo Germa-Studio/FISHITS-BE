@@ -27,8 +27,8 @@ class Location extends Model
     //         'fish_id');
     // }
 
-    public function fish(): HasMany
-    {
-        return $this->hasMany(Fish::class, 'locations_id');
-    }
+    // public function fish(): HasMany
+    // {
+    //     return $this->hasMany(Fish::class, 'locations_id');
+    // }
 }

@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('fish', function (Blueprint $table) {
-            $table->foreign(['locations_id'], 'fk_fish_locations1')->references(['id'])->on('locations')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+        Schema::create('fish', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->nullable();
+            $table->double('weight', 10, 2)->nullable();
+            $table->bigInteger('price')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('fish', function (Blueprint $table) {
-            $table->dropForeign('fk_fish_locations1');
-        });
+        Schema::dropIfExists('fish');
     }
 };

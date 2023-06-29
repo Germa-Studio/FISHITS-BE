@@ -14,7 +14,8 @@ class FishController extends Controller
      */
     public function index()
     {
-        $fish = Fish::with('locations')->get();
+        // $fish = Fish::with('locations')->get();
+        $fish = Fish::all();
         return response()->json([
             'status' => 'success',
             'data' => [
@@ -43,8 +44,8 @@ class FishController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'weight' => 'required',
-            'price' => 'required',
-            'locations_id' => 'required'
+            'price' => 'required'
+            // 'locations_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -59,8 +60,8 @@ class FishController extends Controller
         $fish = Fish::create([
             'name' => $request->name,
             'weight' => $request->weight,
-            'price' => $request->price,
-            'locations_id' => $request->locations_id
+            'price' => $request->price
+            // 'locations_id' => $request->locations_id
         ]);
 
         return response()->json([
@@ -79,8 +80,8 @@ class FishController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'weight' => 'required',
-            'price' => 'required',
-            'locations_id' => 'required'
+            'price' => 'required'
+            // 'locations_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -96,8 +97,8 @@ class FishController extends Controller
         $fish->update([
             'name' => $request->name,
             'weight' => $request->weight,
-            'price' => $request->price,
-            'locations_id' => $request->locations_id
+            'price' => $request->price
+            // 'locations_id' => $request->locations_id
         ]);
 
         return response()->json([

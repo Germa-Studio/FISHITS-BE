@@ -14,8 +14,8 @@ class Fish extends Model
     protected $fillable = [
         'name',
         'weight',
-        'price',
-        'locations_id'
+        'price'
+        // 'locations_id'
     ];
 
     public function users(): BelongsToMany
@@ -25,8 +25,8 @@ class Fish extends Model
                     ->withTimestamps();
     }
 
-    public function locations(): BelongsTo
-    {
-        return $this->belongsTo(Location::class, 'locations_id');
-    }
+    // public function locations(): BelongsTo
+    // {
+    //     return $this->belongsTo(Location::class, 'locations_id');
+    // }
 }

@@ -122,14 +122,14 @@ class LocationController extends Controller
     //-----------------Advanced------------------------
 
     // show fish by location
-    public function showFishByLocation(string $id){
-        $location = Location::find($id);
-        $fish = $location->fish;
-        return response()->json([
-            'status' => 'success',
-            'data' => [
-                'fish' => $fish
-            ]
-        ]);
-    }
+    // public function showFishByLocation(string $id){
+    //     $location = Location::find($id);
+    //     $fish = $location->fish;
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'data' => [
+    //             'fish' => $fish
+    //         ]
+    //     ]);
+    // }
 }

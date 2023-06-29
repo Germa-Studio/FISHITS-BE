@@ -38,9 +38,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
         Route::get('/locations/fish/{id}', [LocationController::class, 'showFishByLocation']);
 
-        Route::get('fish/{fish}/locations', [FishLocationController::class, 'index']);
-        Route::post('fish/{fish}/locations', [FishLocationController::class, 'store']);
-        Route::delete('fish/{fish}/locations', [FishLocationController::class, 'destroy']);
+        // Route::get('fish/{fish}/locations', [FishLocationController::class, 'index']);
+        // Route::post('fish/{fish}/locations', [FishLocationController::class, 'store']);
+        // Route::delete('fish/{fish}/locations', [FishLocationController::class, 'destroy']);
 
         Route::get('/regionpics', [RegionPicController::class, 'index']);
         Route::post('/regionpics', [RegionPicController::class, 'store']);

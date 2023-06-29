@@ -29,7 +29,7 @@ class FishTableSeeder extends Seeder
                 'price' => 50000,
                 'created_at' => '2023-06-19 09:22:47',
                 'updated_at' => '2023-06-20 15:44:32',
-                'locations_id' => 3,
+                // 'locations_id' => 3,
             ),
             1 =>
             array (
@@ -39,7 +39,7 @@ class FishTableSeeder extends Seeder
                 'price' => 40000,
                 'created_at' => '2023-06-20 14:32:38',
                 'updated_at' => '2023-06-20 14:32:38',
-                'locations_id' => 1,
+                // 'locations_id' => 1,
             ),
             2 =>
             array (
@@ -49,7 +49,7 @@ class FishTableSeeder extends Seeder
                 'price' => 40000,
                 'created_at' => '2023-06-20 15:43:53',
                 'updated_at' => '2023-06-20 15:43:53',
-                'locations_id' => 1,
+                // 'locations_id' => 1,
             ),
             3 =>
             array (
@@ -59,7 +59,7 @@ class FishTableSeeder extends Seeder
                 'price' => 35000,
                 'created_at' => '2023-06-20 16:00:20',
                 'updated_at' => '2023-06-20 16:00:20',
-                'locations_id' => 3,
+                // 'locations_id' => 3,
             ),
         ));
 
