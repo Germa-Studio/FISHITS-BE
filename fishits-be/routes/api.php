@@ -28,12 +28,13 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('/locations/{id}', [LocationController::class, 'update']);
     Route::delete('/locations/{id}', [LocationController::class, 'destroy']);
 
+    Route::get('/fish', [FishController::class, 'index']);
+    Route::get('/fish/{id}', [FishController::class, 'show']);
+    Route::post('/fish', [FishController::class, 'store']);
+    Route::put('/fish/{id}', [FishController::class, 'update']);
+    Route::delete('/fish/{id}', [FishController::class, 'destroy']);
+
     Route::group(['middleware' => 'role:admin'], function () {
-        Route::get('/fish', [FishController::class, 'index']);
-        Route::get('/fish/{id}', [FishController::class, 'show']);
-        Route::post('/fish', [FishController::class, 'store']);
-        Route::put('/fish/{id}', [FishController::class, 'update']);
-        Route::delete('/fish/{id}', [FishController::class, 'destroy']);
 
         Route::get('/locations/fish/{id}', [LocationController::class, 'showFishByLocation']);
 
