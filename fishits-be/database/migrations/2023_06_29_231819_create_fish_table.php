@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('fish', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
-            $table->timestamps();
         });
     }
 
