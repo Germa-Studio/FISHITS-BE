@@ -17,7 +17,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => 'auth:sanctum'], function(){
-    // Login only with token
     Route::post('/relogin', [AuthController::class, 'relogin']);
     Route::put('/update', [AuthController::class, 'update']);
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -35,7 +34,6 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::delete('/fish/{id}', [FishController::class, 'destroy']);
 
     Route::get('/users/fish', [UserFishController::class, 'getAllFish']);
-    // get fish by date for all users
     Route::get('/users/fish/{date}', [UserFishController::class, 'getAllFishByDate']);
 
     Route::group(['middleware' => 'role:admin'], function () {

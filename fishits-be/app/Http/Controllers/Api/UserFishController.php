@@ -12,13 +12,19 @@ class UserFishController extends Controller
 {
     public function getFish(User $user)
     {
-        return response()->json($user->fish()->get(), 200);
+        return response()->json($user->fish()
+                        ->orderBy('users_has_fish.tanggal', 'desc')
+                        ->get(), 200);
     }
 
     public function getAllFish()
     {
-        // List all user and their fish
-        $users = User::with('fish')->get(['id', 'username']);
+        $users = User::with(['fish' => function ($query) {
+            $query->orderBy('users_has_fish.tanggal', 'desc')
+                ->orderBy('users_has_fish.id', 'desc');
+        }])
+        ->get(['id', 'username']);
+
         return response()->json($users, 200);
     }
 
@@ -35,7 +41,7 @@ class UserFishController extends Controller
             'pengeluaran' => 'required|numeric',
             'pendapatan' => 'required|numeric',
             'keuntungan' => 'required|numeric',
-            // 'tanggal' => 'required|date',
+            'tanggal' => 'required|date',
             // 'waktu' => 'required|date_format:H:i:s'
         ]);
 
@@ -54,8 +60,8 @@ class UserFishController extends Controller
             'pendapatan' => $request->pendapatan,
             'keuntungan' => $request->keuntungan,
             // get current date and time
-            'tanggal' => date('Y-m-d')
-            // 'waktu' => date('H:i:s')
+            'tanggal' => $request->tanggal,
+            // 'waktu' => $request->waktu
         ]);
 
         // $user->fish()->attach($fishId, ['amount' => $amount, 'bbm' => $bbm]);
@@ -67,8 +73,10 @@ class UserFishController extends Controller
     public function getAllFishByDate($date)
     {
         $users = User::with(['fish' => function ($query) use ($date) {
-            $query->where('tanggal', $date);
-        }])->get(['id', 'username']);
+            $query->where('tanggal', $date)
+                  ->orderBy('users_has_fish.id', 'desc');
+        }])
+        ->get(['id', 'username']);
 
         return response()->json($users, 200);
     }
@@ -76,7 +84,10 @@ class UserFishController extends Controller
     // Get fish based on date
     public function getFishByDate(User $user, $date)
     {
-        $fish = $user->fish()->where('tanggal', $date)->get();
+        $fish = $user->fish()
+        ->where('tanggal', $date)
+        ->orderBy('users_has_fish.id', 'desc')
+        ->get();
         return response()->json($fish, 200);
     }
 
