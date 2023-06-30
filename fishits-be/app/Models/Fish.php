@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Pendaratan;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Fish extends Model
 {
@@ -22,6 +24,11 @@ class Fish extends Model
         return $this->belongsToMany(User::class, 'users_has_fish', 'fish_id', 'users_id')
                     ->as('catched')
                     ->withPivot('id', 'berat', 'satuanBerat', 'harga', 'bbmTerpakai', 'jarakTempuh', 'pengeluaran', 'pendapatan', 'keuntungan', 'tanggal');
+    }
+
+    public function pendaratans(): HasMany
+    {
+        return $this->hasMany(Pendaratan::class);
     }
 
     // public function locations(): BelongsTo

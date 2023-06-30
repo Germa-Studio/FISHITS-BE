@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Fish;
+use App\Models\Pendaratan;
 use Illuminate\Support\Facades\Validator;
 
 class UserFishController extends Controller
@@ -63,6 +64,27 @@ class UserFishController extends Controller
             'tanggal' => $request->tanggal,
             // 'waktu' => $request->waktu
         ]);
+
+        // Create a variable that takes only month and year from $request->tanggal with format YYYYMM
+        $dateMonth = date('Ym', strtotime($request->tanggal));
+
+        // if dateMonth for fish in pendaratans table is not exist, create new one
+        if(!Pendaratan::where('monthYear', $dateMonth)->where('fish_id', $request->fish_id)->exists()) {
+            Pendaratan::create([
+                'berat' => $request->berat,
+                'harga' => $request->harga,
+                'nilaiProduksi' => $request->berat * $request->harga,
+                'monthYear' => $dateMonth,
+                'fish_id' => $request->fish_id
+            ]);
+        } else {
+            // if dateMonth for fish in pendaratans table is exist, update it
+            $pendaratan = Pendaratan::where('monthYear', $dateMonth)->where('fish_id', $request->fish_id)->first();
+            $pendaratan->berat += $request->berat;
+            $pendaratan->harga = $request->harga;
+            $pendaratan->nilaiProduksi = $pendaratan->berat * $pendaratan->harga;
+            $pendaratan->save();
+        }
 
         // $user->fish()->attach($fishId, ['amount' => $amount, 'bbm' => $bbm]);
 
