@@ -17,9 +17,9 @@ return new class extends Migration
             $table->integer('id', true);
             $table->unsignedBigInteger('users_id')->index('fk_users_has_fish_users1_idx');
             $table->unsignedBigInteger('fish_id')->index('fk_users_has_fish_fish1_idx');
-            $table->double('berat', 10, 6)->nullable();
+            $table->bigInteger('berat')->nullable();
             $table->string('satuanBerat')->nullable();
-            $table->string('harga', 45)->nullable();
+            $table->bigInteger('harga')->nullable();
             $table->double('bbmTerpakai', 10, 6)->nullable();
             $table->double('jarakTempuh', 10, 6)->nullable();
             $table->integer('pengeluaran')->nullable();

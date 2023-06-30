@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('pendaratans', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->decimal('berat', 10, 0)->nullable();
-            $table->decimal('harga', 10, 0)->nullable();
-            $table->integer('nilaiProduksi')->nullable();
+            $table->bigInteger('berat')->nullable();
+            $table->bigInteger('harga')->nullable();
+            $table->bigInteger('nilaiProduksi')->nullable();
             $table->string('monthYear', 6)->nullable();
             $table->unsignedBigInteger('fish_id')->index('fk_pendaratan_fish1_idx');
         });
