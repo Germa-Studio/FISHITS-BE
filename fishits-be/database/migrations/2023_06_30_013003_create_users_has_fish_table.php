@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users_has_fish', function (Blueprint $table) {
+            $table->integer('id', true);
             $table->unsignedBigInteger('users_id')->index('fk_users_has_fish_users1_idx');
             $table->unsignedBigInteger('fish_id')->index('fk_users_has_fish_fish1_idx');
-            $table->time('waktu');
             $table->double('berat', 10, 6)->nullable();
             $table->string('satuanBerat')->nullable();
             $table->string('harga', 45)->nullable();
@@ -26,8 +26,6 @@ return new class extends Migration
             $table->integer('pendapatan')->nullable();
             $table->integer('keuntungan')->nullable();
             $table->date('tanggal')->nullable();
-
-            $table->primary(['users_id', 'fish_id', 'waktu']);
         });
     }
 

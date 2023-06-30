@@ -23,9 +23,10 @@ class UsersHasFishTableSeeder extends Seeder
         DB::table('users_has_fish')->insert(array (
             0 =>
             array (
+                // 'id' => 1,
                 'users_id' => 1,
                 'fish_id' => 1,
-                'waktu' => '20:32:34',
+                // 'waktu' => '20:32:34',
                 'berat' => 1.5,
                 'satuanBerat' => 'Kg',
                 'harga' => '10000',
@@ -38,9 +39,10 @@ class UsersHasFishTableSeeder extends Seeder
             ),
             1 =>
             array (
+                // 'id' => 2,
                 'users_id' => 1,
                 'fish_id' => 2,
-                'waktu' => '20:40:01',
+                // 'waktu' => '20:40:01',
                 'berat' => 1.5,
                 'satuanBerat' => 'Kg',
                 'harga' => '10000',
@@ -53,9 +55,10 @@ class UsersHasFishTableSeeder extends Seeder
             ),
             2 =>
             array (
+                // 'id' => 3,
                 'users_id' => 3,
                 'fish_id' => 2,
-                'waktu' => '20:49:52',
+                // 'waktu' => '20:49:52',
                 'berat' => 1.5,
                 'satuanBerat' => 'Kg',
                 'harga' => '10000',
@@ -68,9 +71,10 @@ class UsersHasFishTableSeeder extends Seeder
             ),
             3 =>
             array (
+                // 'id' => 4,
                 'users_id' => 3,
                 'fish_id' => 2,
-                'waktu' => '20:49:53',
+                // 'waktu' => '20:49:53',
                 'berat' => 1.5,
                 'satuanBerat' => 'Kg',
                 'harga' => '10000',

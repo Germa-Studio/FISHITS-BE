@@ -54,8 +54,8 @@ class UserFishController extends Controller
             'pendapatan' => $request->pendapatan,
             'keuntungan' => $request->keuntungan,
             // get current date and time
-            'tanggal' => date('Y-m-d'),
-            'waktu' => date('H:i:s')
+            'tanggal' => date('Y-m-d')
+            // 'waktu' => date('H:i:s')
         ]);
 
         // $user->fish()->attach($fishId, ['amount' => $amount, 'bbm' => $bbm]);
