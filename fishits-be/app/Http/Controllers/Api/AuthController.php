@@ -80,7 +80,8 @@ class AuthController extends Controller
 
         $user = $request->user();
 
-        $tokenResult = $user->createToken('auth_token');
+        $expirationTime = Carbon::now()->addHours(8);
+        $tokenResult = $user->createToken('auth_token', ['expires_at' => $expirationTime]);
         $token = $tokenResult->plainTextToken;
 
         return response()
