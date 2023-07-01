@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\ShipTypeController;
 use App\Http\Controllers\Api\UserFishController;
 use App\Http\Controllers\Api\RegionPicController;
+use App\Http\Controllers\Api\PendaratanController;
 use App\Http\Controllers\Api\FishLocationController;
 
 Route::get('/', function () {
@@ -35,6 +36,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
     Route::get('/users/fish', [UserFishController::class, 'getAllFish']);
     Route::get('/users/fish/{date}', [UserFishController::class, 'getAllFishByDate']);
+
+    Route::get('/pendaratans', [PendaratanController::class, 'index']);
+    Route::get('/pendaratans/{id}', [PendaratanController::class, 'show']);
 
     Route::group(['middleware' => 'role:admin'], function () {
 
