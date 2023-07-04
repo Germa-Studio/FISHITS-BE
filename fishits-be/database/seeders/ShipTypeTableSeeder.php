@@ -24,10 +24,10 @@ class ShipTypeTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'name' => 'ferry',
-                'machine' => 'limited',
-                'bbm' => 1.52,
-                'speed' => 90.0,
+                'name' => 'Kapal Ikan',
+                'machine' => 'Mitsubishi Ps 135 4 Silinder',
+                'bbm' => 270/70.376,
+                'speed' => 22.224,
                 'created_at' => '2023-06-20 16:31:02',
                 'updated_at' => '2023-06-20 16:32:37',
             ),
