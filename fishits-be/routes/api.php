@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ShipTypeController;
 use App\Http\Controllers\Api\UserFishController;
 use App\Http\Controllers\Api\RegionPicController;
 use App\Http\Controllers\Api\PendaratanController;
+use App\Http\Controllers\Api\BubbleController;
 use App\Http\Controllers\Api\FishLocationController;
 
 Route::get('/', function () {
@@ -64,5 +65,12 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
         Route::post('/users/{user}/fish', [UserFishController::class, 'attachFish']);
         Route::delete('/users/{user}/fish/{fish}', [UserFishController::class, 'detachFish']);
     });
+
+    Route::get('/bubbles', [BubbleController::class, 'index']);
+    Route::get('/bubbles/{id}', [BubbleController::class, 'show']);
+    Route::post('/bubbles', [BubbleController::class, 'store']);
+    Route::put('/bubbles/{id}', [BubbleController::class, 'update']);
+    Route::delete('/bubbles/{id}', [BubbleController::class, 'destroy']);
+
 });
 
