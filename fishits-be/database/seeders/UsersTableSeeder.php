@@ -61,7 +61,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => '2023-06-20 16:13:40',
                 'updated_at' => '2023-06-20 16:13:40',
-                'shipType_id' => NULL,
+                'shipType_id' => 1,
             ),
             3 =>
             array (
@@ -75,7 +75,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => '2023-06-26 14:26:36',
                 'updated_at' => '2023-06-26 14:26:36',
-                'shipType_id' => NULL,
+                'shipType_id' => 1,
             ),
             4 =>
             array (
@@ -89,7 +89,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => NULL,
                 'created_at' => '2023-06-26 14:26:58',
                 'updated_at' => '2023-06-26 14:26:58',
-                'shipType_id' => NULL,
+                'shipType_id' => 1,
             ),
         ));
 

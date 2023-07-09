@@ -35,7 +35,8 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'username' => $request->username
+            'username' => $request->username,
+            'shipType_id' => 1
         ]);
 
         $user->save();
@@ -126,7 +127,8 @@ class AuthController extends Controller
             'name' => 'required|string',
             'username' => 'required|string|unique:users,username,'.$user->id,
             'email' => 'required|string|email|unique:users,email,'.$user->id,
-            'password' => 'nullable|string'
+            'password' => 'nullable|string',
+            'shipType_id' => 'required|integer'
         ]);
 
         if($validator->fails()){
@@ -140,7 +142,8 @@ class AuthController extends Controller
         $user->update([
             'name' => $request->name,
             'username' => $request->username,
-            'email' => $request->email
+            'email' => $request->email,
+            'shipType_id' => $request->shipType_id
         ]);
 
         if($request->password){
