@@ -10,8 +10,11 @@ class Bubble extends Model
     use HasFactory;
     protected $table = 'bubbles';
     protected $fillable = [
+        'name',
         'latitude',
         'longitude',
+        'month',
+        'year',
     ];
     public $timestamps = false;
 }

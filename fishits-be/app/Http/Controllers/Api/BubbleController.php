@@ -20,8 +20,12 @@ class BubbleController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'latitude' => 'required',
-            'longitude' => 'required',
+            'name' => ['required'],
+            // latitude and longitude double
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'month' => 'required',
+            'year' => 'required',
         ]);
 
         if ($validator->fails()) {

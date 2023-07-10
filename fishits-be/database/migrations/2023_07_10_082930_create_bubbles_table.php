@@ -8,20 +8,27 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('bubbles', function (Blueprint $table) {
-            $table->id();
-            $table->double('latitude', 10, 6);
-            $table->double('longitude', 10, 6);
+            $table->integer('id', true);
+            $table->double('longitude')->nullable();
+            $table->double('latitude')->nullable();
+            $table->string('name')->nullable();
+            $table->string('month')->nullable();
+            $table->integer('year')->nullable();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('bubbles');
     }

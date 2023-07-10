@@ -23,33 +23,48 @@ class BubblesTableSeeder extends Seeder
         DB::table('bubbles')->insert(array (
             0 =>
             array (
-                'id' => 2,
-                'longitude' => '114',
-                'latitude' => '6',
+                'id' => 11,
+                'longitude' => 113.50015,
+                'latitude' => -6.37755,
+                'name' => 'Bubble 1',
+                'month' => 'July',
+                'year' => 2023,
             ),
             1 =>
             array (
-                'id' => 3,
-                'longitude' => '114',
-                'latitude' => '6',
+                'id' => 12,
+                'longitude' => 113.64608,
+                'latitude' => -6.36612,
+                'name' => 'Bubble 2',
+                'month' => 'July',
+                'year' => 2023,
             ),
             2 =>
             array (
-                'id' => 4,
-                'longitude' => '114',
-                'latitude' => '6',
+                'id' => 13,
+                'longitude' => 113.79117,
+                'latitude' => -6.36824,
+                'name' => 'Bubble 3',
+                'month' => 'July',
+                'year' => 2023,
             ),
             3 =>
             array (
-                'id' => 5,
-                'longitude' => '114',
-                'latitude' => '6',
+                'id' => 14,
+                'longitude' => 113.93393,
+                'latitude' => -6.40145,
+                'name' => 'Bubble 4',
+                'month' => 'July',
+                'year' => 2023,
             ),
             4 =>
             array (
-                'id' => 6,
-                'longitude' => '114',
-                'latitude' => '7',
+                'id' => 16,
+                'longitude' => 113.72319,
+                'latitude' => -6.50362,
+                'name' => 'Bubble 5',
+                'month' => 'July',
+                'year' => 2023,
             ),
         ));
 
