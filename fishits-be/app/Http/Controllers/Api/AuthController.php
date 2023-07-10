@@ -143,7 +143,9 @@ class AuthController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
-            'shipType_id' => $request->shipType_id
+            // convert to integer for $request->shipType_id
+            'shipType_id' => (int)$request->shipType_id
+            // 'shipType_id' => $request->shipType_id
         ]);
 
         if($request->password){
