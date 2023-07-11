@@ -1,4 +1,4 @@
-runtime: php8.2
+runtime: php8
 
 handlers:
   - url: /.*
