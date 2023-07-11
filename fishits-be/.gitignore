@@ -1,9 +1,0 @@
-# # .gcloudignore
-# # Add any additional files/directories to exclude from deployment
-
-# # Laravel specific files/directories
-# /.env
-# /.env.example
-# /tests/
-# /storage/
-# /vendor/
