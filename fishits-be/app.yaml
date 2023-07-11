@@ -27,3 +27,4 @@ skip_files:
   - /tests/
   - /storage/
   - /vendor/
+  - .gitignore
