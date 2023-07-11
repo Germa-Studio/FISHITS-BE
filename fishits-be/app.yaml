@@ -1,5 +1,29 @@
-runtime: php8
+runtime: php82
+env: flex
 
-handlers:
-  - url: /.*
-    script: auto
+runtime_config:
+  document_root: public
+
+env_variables:
+  # Set your Laravel application environment variables here
+  APP_NAME: fishits
+  APP_ENV: production
+  APP_KEY: base64:AathsTOgyZNbPIPaLpLynDwFDcRGOUuLOHvnV/+bzcE=
+  APP_DEBUG: false
+  APP_URL: https://fishits-392515.et.r.appspot.com
+
+  # Set your database connection details
+  DB_CONNECTION: mysql
+  DB_HOST: 34.101.139.220
+  DB_PORT: 3306
+  DB_DATABASE: fishits
+  DB_USERNAME: root
+  DB_PASSWORD:
+
+# Optional: Add any additional files/directories to exclude from deployment
+skip_files:
+  - .env
+  - .env.example
+  - /tests/
+  - /storage/
+  - /vendor/
